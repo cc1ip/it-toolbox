@@ -21,12 +21,12 @@ export function ToolCard({ tool }: ToolCardProps) {
     <Link
       to="/tool/$id"
       params={{ id: tool.id }}
-      className="card p-4 group flex flex-col gap-3 cursor-pointer"
+      className="card p-4 group flex flex-col gap-3 cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1"
       onMouseEnter={preload}
       onTouchStart={preload}
     >
       <div className="flex items-start justify-between">
-        <div className="w-9 h-9 rounded-lg bg-accent/8 border border-accent/15 flex items-center justify-center group-hover:bg-accent/15 transition-colors duration-150">
+        <div className="w-9 h-9 rounded-lg bg-accent/8 border border-accent/15 flex items-center justify-center group-hover:bg-accent/15 group-hover:shadow-glow-accent-sm transition-all duration-300">
           {IconComp && <IconComp className="w-4 h-4 text-accent" />}
         </div>
         <div className="flex items-center gap-1.5">
@@ -48,6 +48,8 @@ export function ToolCard({ tool }: ToolCardProps) {
           {tool.description}
         </p>
       </div>
+      
+      <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-gradient-to-br from-accent/5 to-transparent" />
     </Link>
   )
 }

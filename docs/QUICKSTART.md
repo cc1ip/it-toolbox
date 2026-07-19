@@ -34,7 +34,7 @@ https://it-toolbox.pages.dev
 
 ```bash
 # 克隆仓库
-git clone https://github.com/your-username/it-toolbox.git
+git clone https://github.com/cc1ip/it-toolbox.git
 cd it-toolbox
 
 # 安装依赖
@@ -408,7 +408,7 @@ IT Toolbox 包含 10 大类共 72 款工具：
 请访问项目的 GitHub 仓库提交 Issue：
 
 ```
-https://github.com/your-username/it-toolbox/issues
+https://github.com/cc1ip/it-toolbox/issues
 ```
 
 ### Q5: 工具箱支持移动端吗？

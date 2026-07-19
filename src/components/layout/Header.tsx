@@ -41,7 +41,8 @@ export function Header() {
 
   return (
     <>
-      <header className="h-14 border-b border-border-base bg-bg-surface/80 backdrop-blur-sm flex items-center px-4 gap-3 sticky top-0 z-10">
+      <header className="h-14 border-b border-border-base bg-bg-surface/80 backdrop-blur-md flex items-center px-4 gap-3 sticky top-0 z-10 relative">
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
         <button
           onClick={toggleMobileMenu}
           className="lg:hidden flex items-center justify-center w-9 h-9 rounded-lg text-text-secondary hover:text-text-primary hover:bg-bg-raised transition-colors"
@@ -52,9 +53,9 @@ export function Header() {
 
         <button
           onClick={() => setOpen(true)}
-          className="flex-1 max-w-md flex items-center gap-2 px-3 py-2 rounded-lg bg-bg-raised border border-border-base text-text-muted text-sm hover:border-border-strong transition-colors duration-150"
+          className="flex-1 max-w-md flex items-center gap-2 px-3 py-2 rounded-lg bg-bg-raised/80 backdrop-blur-sm border border-border-base text-text-muted text-sm hover:border-accent/40 hover:text-text-secondary transition-all duration-200 group"
         >
-          <Search className="w-4 h-4" />
+          <Search className="w-4 h-4 transition-colors duration-200 group-hover:text-accent" />
           <span className="flex-1 text-left truncate">{t('app.searchPlaceholder')}</span>
           <kbd className="hidden sm:flex items-center gap-1 px-1.5 py-0.5 rounded bg-bg-overlay text-xs font-mono">
             <Command className="w-3 h-3" />K
@@ -63,7 +64,7 @@ export function Header() {
 
         <div className="flex items-center gap-1">
           <a
-            href="https://github.com/Zoroaaa/it-toolbox"
+            href="https://github.com/cc1ip/it-toolbox"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center w-9 h-9 rounded-lg text-text-secondary hover:text-text-primary hover:bg-bg-raised transition-colors"
@@ -81,8 +82,8 @@ export function Header() {
 
       {open && (
         <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4">
-          <div className="fixed inset-0 bg-bg-base/60 backdrop-blur-sm" onClick={() => handleOpenChange(false)} />
-          <div className="relative w-full max-w-lg bg-bg-surface border border-border-strong rounded-xl shadow-theme-lg overflow-hidden animate-slide-up">
+          <div className="fixed inset-0 bg-bg-base/60 backdrop-blur-md" onClick={() => handleOpenChange(false)} />
+          <div className="relative w-full max-w-lg bg-bg-surface/90 backdrop-blur-xl border border-border-strong rounded-xl shadow-theme-lg shadow-glow-accent overflow-hidden animate-slide-up">
             <Cmd className="[&_[cmdk-input-wrapper]]:border-b [&_[cmdk-input-wrapper]]:border-border-base" label="Search tools">
               <div className="flex items-center gap-2 px-4 py-3">
                 <Search className="w-4 h-4 text-text-muted flex-shrink-0" />
@@ -134,9 +135,9 @@ function SearchResults({ query, onSelect }: { query: string; onSelect: (t: ToolM
                 value={tool.id}
                 onSelect={() => onSelect(tool)}
                 className="flex items-center gap-3 px-2 py-2 rounded-lg cursor-pointer
-                           text-text-secondary hover:text-text-primary
-                           aria-selected:bg-accent/10 aria-selected:text-accent
-                           transition-colors duration-100"
+                           text-text-secondary hover:text-text-primary hover:bg-accent/5
+                           aria-selected:bg-accent/10 aria-selected:text-accent aria-selected:shadow-glow-accent-sm
+                           transition-all duration-150"
               >
                 {IconComp && <IconComp className="w-4 h-4 flex-shrink-0" />}
                 <div className="flex-1 min-w-0">

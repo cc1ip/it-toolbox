@@ -22,10 +22,11 @@ export function Sidebar() {
 
   return (
     <>
-      <aside className="hidden lg:flex w-56 flex-shrink-0 flex-col bg-bg-surface border-r border-border-base h-screen sticky top-0 overflow-y-auto">
-        <div className="px-4 py-5 border-b border-border-base">
+      <aside className="hidden lg:flex w-56 flex-shrink-0 flex-col bg-bg-surface/80 backdrop-blur-md border-r border-border-base h-screen sticky top-0 overflow-y-auto">
+        <div className="px-4 py-5 border-b border-border-base relative">
+          <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent/50 via-accent/20 to-transparent" />
           <Link to="/" className="flex items-center gap-2.5 group">
-            <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center shadow-glow-accent-sm animate-glow-pulse">
               <Wrench className="w-4 h-4 text-bg-base" />
             </div>
             <span className="font-semibold text-text-primary font-mono tracking-tight">
@@ -53,13 +54,16 @@ export function Sidebar() {
                 to="/category/$name"
                 params={{ name: cat }}
                 onClick={handleNavClick}
-                className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-all duration-100 group
+                className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-all duration-200 group relative overflow-hidden
                   ${isActive
-                    ? 'bg-accent/10 text-accent'
+                    ? 'bg-accent/10 text-accent shadow-glow-accent-sm'
                     : 'text-text-secondary hover:text-text-primary hover:bg-bg-raised'
                   }`}
               >
-                {IconComp && <IconComp className="w-4 h-4 flex-shrink-0" />}
+                {isActive && (
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-4 bg-accent rounded-r" />
+                )}
+                {IconComp && <IconComp className={`w-4 h-4 flex-shrink-0 transition-all duration-200 ${isActive ? 'text-accent' : ''}`} />}
                 <span className="flex-1 truncate">{t(`categories.${cat}`)}</span>
                 <span className={`text-xs tabular-nums ${isActive ? 'text-accent/60' : 'text-text-muted'}`}>
                   {count}
@@ -82,10 +86,11 @@ export function Sidebar() {
             className="absolute inset-0 bg-bg-base/60 backdrop-blur-sm"
             onClick={() => setMobileMenuOpen(false)}
           />
-          <aside className="absolute left-0 top-0 bottom-0 w-72 max-w-[85vw] bg-bg-surface border-r border-border-base flex flex-col animate-slide-in-left shadow-theme-lg">
-            <div className="px-4 py-5 border-b border-border-base flex items-center justify-between">
+          <aside className="absolute left-0 top-0 bottom-0 w-72 max-w-[85vw] bg-bg-surface/90 backdrop-blur-md border-r border-border-base flex flex-col animate-slide-in-left shadow-theme-lg">
+            <div className="px-4 py-5 border-b border-border-base flex items-center justify-between relative">
+              <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent/50 via-accent/20 to-transparent" />
               <Link to="/" onClick={handleNavClick} className="flex items-center gap-2.5 group">
-                <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">
+                <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center shadow-glow-accent-sm">
                   <Wrench className="w-4 h-4 text-bg-base" />
                 </div>
                 <span className="font-semibold text-text-primary font-mono tracking-tight">
@@ -120,13 +125,16 @@ export function Sidebar() {
                     to="/category/$name"
                     params={{ name: cat }}
                     onClick={handleNavClick}
-                    className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-all duration-100 group
+                    className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-all duration-200 group relative overflow-hidden
                       ${isActive
-                        ? 'bg-accent/10 text-accent'
+                        ? 'bg-accent/10 text-accent shadow-glow-accent-sm'
                         : 'text-text-secondary hover:text-text-primary hover:bg-bg-raised'
                       }`}
                   >
-                    {IconComp && <IconComp className="w-4 h-4 flex-shrink-0" />}
+                    {isActive && (
+                      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-4 bg-accent rounded-r" />
+                    )}
+                    {IconComp && <IconComp className={`w-4 h-4 flex-shrink-0 transition-all duration-200 ${isActive ? 'text-accent' : ''}`} />}
                     <span className="flex-1 truncate">{t(`categories.${cat}`)}</span>
                     <span className={`text-xs tabular-nums ${isActive ? 'text-accent/60' : 'text-text-muted'}`}>
                       {count}
